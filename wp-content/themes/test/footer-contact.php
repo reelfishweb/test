@@ -42,7 +42,7 @@
 	</div><!-- .site-content-contain -->
 </div><!-- #page -->
 
-<script src="https://maps.googleapis.com/maps/api/"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
 <script type="text/javascript">
     (function ($) {
 

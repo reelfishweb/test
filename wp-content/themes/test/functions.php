@@ -610,7 +610,7 @@ if (function_exists("register_field_group"))
                 array(
                     'param' => 'page_template',
                     'operator' => '==',
-                    'value' => 'page-contanc.php',
+                    'value' => 'page-contanct.php',
                     'order_no' => 0,
                     'group_no' => 0,
                 ),
@@ -745,6 +745,10 @@ if (function_exists("register_field_group"))
     ));
 }
 
+
+/**
+ * Add post Employee type
+ */
 function create_post_type()
 {
     register_post_type('Employee', array(

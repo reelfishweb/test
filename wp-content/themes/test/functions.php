@@ -565,3 +565,197 @@ require get_parent_theme_file_path( '/inc/customizer.php' );
  * SVG icons functions and filters.
  */
 require get_parent_theme_file_path( '/inc/icon-functions.php' );
+
+/**
+ * Add Contact Field
+ */
+if (function_exists("register_field_group"))
+{
+    register_field_group(array(
+        'id' => 'acf_contact',
+        'title' => 'Contact',
+        'fields' => array(
+            array(
+                'key' => 'field_0000000001',
+                'label' => 'Logo',
+                'name' => 'logo',
+                'type' => 'image',
+                'save_format' => 'id',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+            array(
+                'key' => 'field_0000000002',
+                'label' => 'Address',
+                'name' => 'address',
+                'type' => 'wysiwyg',
+                'default_value' => '',
+                'toolbar' => 'full',
+                'media_upload' => 'yes',
+            ),
+            array(
+                'key' => 'field_0000000003',
+                'label' => 'Map',
+                'name' => 'map',
+                'type' => 'google_map',
+                'required' => 1,
+                'center_lat' => '',
+                'center_lng' => '',
+                'zoom' => '',
+                'height' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'page_template',
+                    'operator' => '==',
+                    'value' => 'page-contanc.php',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}
+
+/**
+ * Add Employee Field
+ */
+if (function_exists("register_field_group"))
+{
+    register_field_group(array(
+        'id' => 'acf_employee',
+        'title' => 'Employee',
+        'fields' => array(
+            array(
+                'key' => 'field_0000000004',
+                'label' => 'Image',
+                'name' => 'image',
+                'type' => 'image',
+                'save_format' => 'id',
+                'preview_size' => 'thumbnail',
+                'library' => 'all',
+            ),
+            array(
+                'key' => 'field_0000000005',
+                'label' => 'Name',
+                'name' => 'name',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_0000000006',
+                'label' => 'Email',
+                'name' => 'email',
+                'type' => 'email',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+            ),
+            array(
+                'key' => 'field_0000000007',
+                'label' => 'WWW',
+                'name' => 'www',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_0000000008',
+                'label' => 'Label',
+                'name' => 'label',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_0000000009',
+                'label' => 'URL',
+                'name' => 'url',
+                'type' => 'text',
+                'default_value' => '',
+                'placeholder' => '',
+                'prepend' => '',
+                'append' => '',
+                'formatting' => 'html',
+                'maxlength' => '',
+            ),
+            array(
+                'key' => 'field_0000000010',
+                'label' => 'Related posts',
+                'name' => 'related_posts',
+                'type' => 'relationship',
+                'return_format' => 'object',
+                'post_type' => array(
+                    0 => 'post',
+                ),
+                'taxonomy' => array(
+                    0 => 'all',
+                ),
+                'filters' => array(
+                    0 => 'search',
+                ),
+                'result_elements' => array(
+                    0 => 'post_type',
+                    1 => 'post_title',
+                ),
+                'max' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'employee',
+                    'order_no' => 0,
+                    'group_no' => 0,
+                ),
+            ),
+        ),
+        'options' => array(
+            'position' => 'normal',
+            'layout' => 'no_box',
+            'hide_on_screen' => array(
+            ),
+        ),
+        'menu_order' => 0,
+    ));
+}
+
+function create_post_type()
+{
+    register_post_type('Employee', array(
+        'labels' => array(
+            'name' => __('Employee'),
+            'singular_name' => __('employee')
+        ),
+        'public' => true,
+        'has_archive' => true,
+            )
+    );
+}
+
+add_action('init', 'create_post_type');

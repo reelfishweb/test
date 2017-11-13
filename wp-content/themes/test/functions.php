@@ -749,7 +749,6 @@ if (function_exists("register_field_group"))
 /**
  * Add post Employee type
  */
-
 function create_post_type()
 {
     register_post_type('Employee', array(

@@ -1,4 +1,25 @@
 <?php
+
+function custom_classes_autoload(){
+
+	$base_dir =  __DIR__ . '/class/';
+	$dir = new DirectoryIterator($base_dir);
+	foreach ($dir as $fileinfo) {
+		$file = $base_dir . $fileinfo->getFilename();
+                if($fileinfo->getFilename() != '.' and $fileinfo->getFilename() != '..'){
+                    if (file_exists($file)) {
+                            require $file;
+                    }
+                }
+	}
+}
+custom_classes_autoload();
+
+wp_localize_script( 'twentyfifteen-script', 'ajax_object', array(
+    'ajaxurl' => admin_url( 'admin-ajax.php' ),
+));
+
+
 /**
  * Twenty Seventeen functions and definitions
  *

@@ -44,8 +44,23 @@
 </div><!-- #page -->
 
 <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+<script>
+	var ajax_object = {
+		ajax_url: '<?php echo admin_url( 'admin-ajax.php' ); ?>'
+	}; 
+</script>
 <script type="text/javascript">
     (function ($) {
+
+    /*
+     * Ajax show Employee on contact page
+     */
+    $(document).ready(function(){
+        console.log('show Employee');
+        $.post(ajax_object.ajax_url, {action:'searchEmployee'}, function(data){
+            $('#employeeDiv').html(data.substr(0,data.length-1));
+        });
+    });
 
     /*
      *  new_map
